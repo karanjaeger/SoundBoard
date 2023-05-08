@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SoundBoard</title>
+    <fav></fav>
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+  <body>
+    <div>
+      <audio id="Do"><source src="sounds/C4.mp3" /></audio>
+      <audio id="Re"><source src="sounds/D4.mp3" /></audio>
+      <audio id="Mi"><source src="sounds/E4.mp3" /></audio>
+      <audio id="Fa"><source src="sounds/F4.mp3" /></audio>
+      <audio id="Sa"><source src="sounds/G4.mp3" /></audio>
+      <audio id="La"><source src="sounds/A4.mp3" /></audio>
+      <audio id="Ti"><source src="sounds/B4.mp3" /></audio>
+      <audio id="DO"><source src="sounds/C5.mp3" /></audio>
+
+      <canvas id="canvas" width="966" height="1000"></canvas>
+    </div>
+    <script src="https://unpkg.com/@rive-app/canvas@1.0.102"></script>
+    <script>
+      const r = new rive.Rive({
+        src: "/SoundBoard.riv",
+        canvas: document.getElementById("canvas"),
+        autoplay: true,
+        stateMachines: "State Machine 1",
+        fit: rive.Fit.cover,
+        onStateChange: (event) => {
+          switch (event.data[0]) {
+            case "doPress":
+              console.log("Do is called");
+              playDo();
+              break;
+            case "rePress":
+              console.log("Re is called");
+              playRe();
+              break;
+            case "miPress":
+              console.log("Mi is called");
+              playMi();
+              break;
+            case "faPress":
+              console.log("Fa is called");
+              playFa();
+              break;
+            case "solPress":
+              console.log("Sol is called");
+              playSa();
+              break;
+            case "laPress":
+              console.log("La is called");
+              playLa();
+              break;
+            case "tiPress":
+              console.log("Ti is called");
+              playTi();
+              break;
+            case "doctavePress":
+              console.log("Doctave is called");
+              playDO();
+          }
+        },
+      });
+    </script>
+    <script src="index.js"></script>
+  </body>
+</html>
